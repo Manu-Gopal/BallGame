@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Game</title>
+    <style>
+        body{
+            background-color: rgb(26, 20, 63);
+            color: aliceblue;
+        }
+        button{
+            background-color: rgb(100, 146, 196);
+        color: black;
+        text-align: center;
+        font-size: 16px;
+        border-radius: 12px;
+        width: 8%;
+        height: 50px;
+        cursor: pointer;
+        }
+        button[name="back"]{
+        background-color: rgb(92, 188, 129);
+        border: 2px solid black;
+        color: black;
+        text-align: center;
+        font-size: 20px;
+        border-radius: 12px;
+        width: 10%;
+        height :60px;
+        cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h3>There are 20 balls in a bag. You and the Computer can choose either 1 or 2 balls. The one who takes the last ball fails...!</h3><br><br>
+        <h2>Balls Left : <div id="ballcounter" style="display: inline;">20</div></h2><br><br>
+        <h3><div id="msg">Your Turn</div></h3><br>
+        <div id="result" style="font-size: 24px;" style="color: red;"></div>
+        <p id="pick">
+            <button id="button1" onclick="one()">1</button>&nbsp;&nbsp;
+            <button id="button2" onclick="two()">2</button><br>
+        </p>
+        <div id="replay">
+            <button name="back" onClick="window.location.reload();">Play Again</button>
+        </div>
+    </center>
+    <script>
+        let ball=20
+
+        let el2 = document.getElementById("replay")
+        el2.style.visibility = 'hidden'
+
+        function one(){
+            
+            ball = ball - 1
+            document.getElementById("ballcounter").innerHTML = ball
+
+            let el = document.getElementById("pick")
+            el.style.visibility = 'hidden'
+
+            setTimeout( function(){
+            if(ball == 19 || ball == 17 || ball == 14 || ball == 11 || ball == 10 || ball == 8 || ball == 7 || ball == 5 || ball == 4){
+                ball = ball - 1
+                document.getElementById("ballcounter").innerHTML = ball
+                document.getElementById("msg").innerHTML = "Computer took 1 ball"
+                let el = document.getElementById("pick")
+                el.style.visibility = 'visible'
+            }
+            else if(ball == 16 || ball == 15 || ball == 13 || ball == 12 || ball == 9 || ball == 6){
+                ball = ball - 2
+                document.getElementById("ballcounter").innerHTML = ball
+                document.getElementById("msg").innerHTML = "Computer took 2 balls"
+                let el = document.getElementById("pick")
+                el.style.visibility = 'visible'
+            }
+            else if(ball == 3){
+                ball = 1
+                let el = document.getElementById("pick")
+                el.style.visibility = 'hidden'
+                document.getElementById("ballcounter").innerHTML = 1
+                document.getElementById("result").innerHTML = "You Lost...!"
+                document.getElementById("msg").innerHTML = "Computer took 2 balls"
+                let el2 = document.getElementById("replay")
+                el2.style.visibility = 'visible'
+            }
+            else if(ball == 2){
+                ball = 1
+                let el = document.getElementById("pick")
+                el.style.visibility = 'hidden'
+                document.getElementById("ballcounter").innerHTML = 1
+                document.getElementById("result").innerHTML = "You Lost...!"
+                document.getElementById("msg").innerHTML = "Computer took 1 ball"
+                let el2 = document.getElementById("replay")
+                el2.style.visibility = 'visible'
+            }
+            else if(ball == 1){
+                let el = document.getElementById("pick")
+                el.style.visibility = 'hidden'
+                document.getElementById("ballcounter").innerHTML = 0
+                document.getElementById("result").innerHTML = "You Won...!"
+                let el2 = document.getElementById("replay")
+                el2.style.visibility = 'visible'
+            }
+        }, 1000)
+    }
+        function two(){
+            ball = ball - 2
+            document.getElementById("ballcounter").innerHTML = ball
+            let el = document.getElementById("pick")
+            el.style.visibility = 'hidden'
+            setTimeout(function (){
+            if(ball == 18 || ball == 16 || ball == 15 || ball == 13 || ball == 12 || ball == 9 || ball == 6){
+                ball = ball - 2
+                document.getElementById("ballcounter").innerHTML = ball
+                document.getElementById("msg").innerHTML = "Computer took 2 balls"
+                let el = document.getElementById("pick")
+                el.style.visibility = 'visible'
+            }
+            else if(ball == 14 || ball == 11 || ball == 10 || ball == 8 || ball == 7 || ball == 5 || ball == 4){
+                ball = ball - 1
+                document.getElementById("ballcounter").innerHTML = ball
+                document.getElementById("msg").innerHTML = "Computer took 1 ball"
+                let el = document.getElementById("pick")
+                el.style.visibility = 'visible'
+            }
+            else if(ball == 3){
+                ball = 1
+                let el = document.getElementById("pick")
+                el.style.visibility = 'hidden'
+                document.getElementById("ballcounter").innerHTML = 1
+                document.getElementById("result").innerHTML = "You Lost...!"
+                document.getElementById("msg").innerHTML = "Computer took 2 balls"
+                let el2 = document.getElementById("replay")
+                el2.style.visibility = 'visible'
+            }
+            else if(ball == 2){
+                ball = 1
+                let el = document.getElementById("pick")
+                el.style.visibility = 'hidden'
+                document.getElementById("ballcounter").innerHTML = 1
+                document.getElementById("result").innerHTML = "You Lost...!"
+                document.getElementById("msg").innerHTML = "Computer took 1 ball"
+                let el2 = document.getElementById("replay")
+                el2.style.visibility = 'visible'
+            }
+            else if(ball == 1){
+                let el = document.getElementById("pick")
+                el.style.visibility = 'hidden'
+                document.getElementById("ballcounter").innerHTML = 0
+                document.getElementById("result").innerHTML = "You Won...!"
+                let el2 = document.getElementById("replay")
+                el2.style.visibility = 'visible'
+            }
+            
+        }, 1000)
+    }
+    </script>
+</body>
+</html>
